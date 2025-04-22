@@ -1,38 +1,111 @@
-const Hero: React.FC = () => {
+import datapointceo from "../assets/datapointceo.jpg";
+import happylearning from "../assets/happylearner.jpg";
+import happytech from "../assets/happtech.jpg";
+import { useState, useEffect, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+
+const Hero = () => {
+  const navigate = useNavigate();
+
+  const slides = useMemo(
+    () => [
+      {
+        id: 1,
+        title: "Transform Your Future with DataPoint Academy",
+        description:
+          "Unlock professional mastery in Forex trading, cutting-edge tech development, and profitable e-commerce strategies.",
+        image: datapointceo,
+        cta: "Start Learning Today",
+        overlay: "from-blue-600/60 to-black/80",
+      },
+      {
+        id: 2,
+        title: "Forex Trading Mastery with Industry Experts",
+        description:
+          "Learn proven strategies from pro traders with live market insights and mentorship to build real profitability.",
+        image: happylearning,
+        cta: "Join Trading Program",
+        overlay: "from-emerald-500/60 to-black/80",
+      },
+      {
+        id: 3,
+        title: "Tech Skills for the Digital Economy",
+        description:
+          "From coding fundamentals to blockchain mastery, become job-ready in months, not years.",
+        image: happytech,
+        cta: "Explore Tech Courses",
+        overlay: "from-sky-500/60 to-black/80",
+      },
+    ],
+    []
+  );
+
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  const current = slides[index];
+
   return (
     <section
+      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
       id="home"
-      className="pt-24 pb-12 md:pt-32 md:pb-20 bg-gradient-to-br from-blue-50 to-indigo-100"
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-10 md:mb-0">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
-              Master New Skills at{" "}
-              <span className="text-blue-600">DataPoint</span> Academy
+      <div className="absolute inset-0 z-0">
+        <img
+          src={current.image}
+          alt=""
+          className="w-full h-full object-cover"
+        />
+        <div
+          className={`absolute inset-0 bg-gradient-to-r ${current.overlay}`}
+        />
+      </div>
+
+      <div className="relative z-10 px-6 text-center max-w-4xl">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current.id}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
+            <h1 className="text-white text-4xl md:text-6xl font-bold leading-tight">
+              {current.title}
             </h1>
-            <p className="text-lg md:text-xl text-gray-700 mb-8">
-              Your gateway to professional expertise in Forex trading, tech
-              development, and dropshipping business models.
+            <p className="text-white text-lg md:text-2xl max-w-2xl mx-auto">
+              {current.description}
             </p>
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium text-lg transition duration-300">
-                Explore Courses
-              </button>
-              <button className="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-md font-medium text-lg transition duration-300">
-                Learn More
-              </button>
-            </div>
-          </div>
-          <div className="md:w-1/2">
-            <div className="bg-white rounded-lg shadow-xl p-6 md:p-8">
-              <img
-                src="/api/placeholder/600/400"
-                alt="Students learning"
-                className="rounded-md w-full"
-              />
-            </div>
-          </div>
+            <button
+              onClick={() => navigate("/login")}
+              className="bg-white text-indigo-600 hover:bg-indigo-100 font-semibold py-3 px-8 rounded-full transition transform hover:scale-105 flex items-center justify-center mx-auto text-lg shadow-md"
+            >
+              {current.cta}
+              <ArrowRight className="ml-2" size={20} />
+            </button>
+          </motion.div>
+        </AnimatePresence>
+
+        <div className="flex justify-center mt-10 space-x-3">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                i === index ? "bg-white w-6" : "bg-white/50"
+              }`}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>

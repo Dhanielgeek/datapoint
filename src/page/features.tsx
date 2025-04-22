@@ -1,4 +1,5 @@
 import { BiCheck } from "react-icons/bi";
+import studentin from "../assets/studentinclass.jpg";
 
 const Features: React.FC = () => {
   const features = [
@@ -17,7 +18,7 @@ const Features: React.FC = () => {
           <div className="md:w-1/2 mb-10 md:mb-0">
             <div className="bg-white rounded-lg shadow-xl p-6">
               <img
-                src="/api/placeholder/500/400"
+                src={studentin}
                 alt="Students in classroom"
                 className="rounded-md w-full"
               />
