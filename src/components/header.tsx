@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { href: "#courses", label: "Courses" },
   { href: "#about", label: "About Us" },
   { href: "#testimonials", label: "Testimonials" },
+  { href: "#contact", label: "Contact Us" },
 ];
 
 const Header: React.FC = () => {

@@ -78,9 +78,12 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-white text-lg font-medium mb-4">Contact</h4>
             <ul className="space-y-2">
-              <li>info@datapointacademy.com</li>
-              <li>+1 (555) 123-4567</li>
-              <li>123 Learning St, Education City</li>
+              <li>datapointmicrosystems@gmail.com</li>
+              <li>+234 805 657 4122</li>
+              <li>
+                138, Kirikiri rd opposite Fuadem Hotel by 2nd benue B/stop ,
+                olodi Apapa , Lagos
+              </li>
             </ul>
           </div>
         </div>
