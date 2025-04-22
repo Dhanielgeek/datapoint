@@ -81,10 +81,11 @@ const Header: React.FC = () => {
           />
           <div
             className={`font-bold text-2xl md:text-3xl ${
-              isScrolled ? "text-blue-600" : "text-white"
+              isScrolled ? "text-blue-600" : "text-blue-400"
             }`}
           >
             DataPoint
+            <p className=" text-red-500 text-xs">Forex and Tech academy</p>
           </div>
         </div>
 
