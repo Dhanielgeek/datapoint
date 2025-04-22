@@ -1,8 +1,13 @@
+import ContactSection from "./contact";
 import CourseCategories from "./courses";
-import CTASection from "./cta";
+// import CTASection from "./cta";
+import FAQSection from "./faq";
 import Features from "./features";
 import Hero from "./hero";
+import MentorshipSection from "./mentorship";
+import SkillsSection from "./skillssection";
 import Testimonials from "./testimonals";
+import WhyChooseUsSection from "./whychoseus";
 
 const Home = () => {
   return (
@@ -10,8 +15,13 @@ const Home = () => {
       <Hero />
       <Features />
       <CourseCategories />
+      <SkillsSection />
+      <MentorshipSection />
+      <WhyChooseUsSection />
       <Testimonials />
-      <CTASection />
+      <FAQSection />
+      {/* <CTASection /> */}
+      <ContactSection />
     </div>
   );
 };
