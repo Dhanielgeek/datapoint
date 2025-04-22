@@ -16,7 +16,7 @@ const App = () => {
 
   if (loading) {
     return (
-      <div className="w-full h-screen flex flex-col items-center justify-center">
+      <div className="w-full h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-gray-100">
         <div className="relative">
           <img
             src={logo}
@@ -40,6 +40,9 @@ const App = () => {
             </div>
           </div>
         </div>
+        <p className="text-blue-500 mt-12 font-bold ">
+          Datapoint <span className="text-red-600">Academy</span>
+        </p>
       </div>
     );
   }
